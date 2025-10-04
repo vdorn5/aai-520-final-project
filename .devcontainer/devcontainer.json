@@ -3,6 +3,10 @@
     "build": {
         "dockerfile": "Containerfile"
     },
+    "runArgs": [
+        "--gpus",
+        "all"
+    ],
     "customizations": {
         "vscode": {
             "extensions": [
