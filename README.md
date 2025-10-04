@@ -1,6 +1,34 @@
 # AAI 520 Final Project - Group 4
 
+## Investment Research Agentic AI
 
+An autonomous multi-agent system for performing dynamic, self-improving investment research using LLMs, financial data APIs, and structured agent workflows. Built with [CrewAI](https://github.com/joaomdmoura/crewAI) and [LangGraph](https://docs.langgraph.dev/) to orchestrate specialist agents in a collaborative research pipeline.
+
+### Project Overview
+
+This project implements an **Agentic Research Assistant AI** that performs comprehensive analysis of a stock ticker by:
+
+- Ingesting and summarizing financial news
+- Analyzing company earnings and SEC filings
+- Assessing macroeconomic indicators
+- Self-critiquing output and refining performance over time
+
+It leverages core **agentic AI patterns**:
+
+- Prompt Chaining  
+- Routing to Specialist Agents  
+- Evaluator–Optimizer Feedback Loop  
+- Learning Across Runs via Memory
+
+## Agents & Responsibilities
+
+| Agent             | Role                                                                 |
+|------------------|----------------------------------------------------------------------|
+| `OrchestratorAgent` | High-level planner, routes tasks to specialist agents, assembles final report |
+| `NewsAnalystAgent`  | Ingests news, classifies sentiment, extracts entities, and summarizes |
+| `EarningsAnalystAgent` | Parses financial statements, extracts metrics, interprets SEC filings |
+| `MarketAnalystAgent`   | Contextualizes macroeconomic trends using FRED + market data |
+| `CriticAgent`        | Evaluates analysis quality and generates feedback (Evaluator-Optimizer) |
 
 ## Prerequisites
 1. Docker: Install Docker on your machine. 
@@ -32,3 +60,5 @@ jupyter nbconvert --to pdf <file_name.ipynb>
 
 ## TODO
 [] 
+
+

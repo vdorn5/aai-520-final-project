@@ -1,3 +1,4 @@
+# base requirements
 jupyter==1.0.0
 numpy==1.26.4
 pandas==2.2.2
@@ -6,3 +7,11 @@ scikit-learn==1.5.0
 scipy==1.13.1
 seaborn==0.13.2
 tensorflow==2.15.0
+
+# project specific requirements
+yfinance==0.2.66
+openai==2.1.0
+langchain==0.3.27
+crewai==0.201.1
+beautifulsoup4==4.14.2
+python-dotenv==1.1.1
