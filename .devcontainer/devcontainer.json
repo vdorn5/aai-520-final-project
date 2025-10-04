@@ -1,0 +1,16 @@
+{
+    "name": "devbox-AAI-520-final-project",
+    "build": {
+        "dockerfile": "Containerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-toolsai.jupyter",   // Jupyter extension
+                "ms-python.python",     // Python extension
+                "adammaraszek.vscode-pdf", // Viewing PDFs
+                "demystifying-javascript.python-extensions-pack" // Python developer pack
+            ]
+        }
+    }
+}
