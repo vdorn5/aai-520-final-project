@@ -1,0 +1,10 @@
+crewai
+crewai-tools
+python-dotenv
+yfinance
+openai
+newsapi-python
+nltk
+transformers
+torch
+fredapi
