@@ -41,3 +41,12 @@ def get_financial_statements(ticker: str) -> str:
     Cash Flow Statement:\n{cash_flow.to_string()}
     """
     return report
+
+def get_yfinance_financials(ticker):
+    stock = yf.Ticker(ticker)
+    financials = stock.financials
+    return financials.to_string()
+
+def get_analyst_recommendations(ticker):
+    stock = yf.Ticker(ticker)
+    return stock.recommendations.tail(3).to_string()
