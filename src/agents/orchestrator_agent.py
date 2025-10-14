@@ -19,31 +19,31 @@ class OrchestratorAgent:
         news_summary = self.news_agent.analyze(ticker)
         print(news_summary)
 
-    #     print("\nEarnings Summary:")
-    #     earnings_summary = self.earnings_agent.analyze(ticker)
-    #     print(earnings_summary)
+        print("\nEarnings Summary:")
+        earnings_summary = self.earnings_agent.analyze(ticker)
+        print(earnings_summary)
 
-    #     print("\nMarket Context:")
-    #     market_summary = self.market_agent.analyze()
-    #     print(market_summary)
+        print("\nMarket Context:")
+        market_summary = self.market_agent.analyze()
+        print(market_summary)
 
-    #     # Combine all sections into one report
-    #     full_report = f"""
-    # # Investment Research Report: {ticker}
+        # Combine all sections into one report
+        full_report = f"""
+    # Investment Research Report: {ticker}
 
-    # ## News Summary:
-    # {news_summary}
+    ## News Summary:
+    {news_summary}
 
-    # ## Earnings Summary:
-    # {earnings_summary}
+    ## Earnings Summary:
+    {earnings_summary}
 
-    # ## Market Context:
-    # {market_summary}
-    # """
+    ## Market Context:
+    {market_summary}
+    """
 
-    #     print("\nRunning Critique:\n")
-    #     critique = self.critic_agent.critique(full_report)
-    #     print(critique)
+        print("\nRunning Critique:\n")
+        critique = self.critic_agent.critique(full_report)
+        print(critique)
 
-    #     print("\nFinal Investment Report with Critique Generated.\n")
+        print("\nFinal Investment Report with Critique Generated.\n")
 
