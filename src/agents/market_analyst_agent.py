@@ -1,18 +1,15 @@
 from crewai import Agent
+from tools.fred_client import get_fred_data
 
-class MarketAnalystAgent:
-    def __init__(self, llm):
-        self.llm = llm
-        self.agent = Agent(
-            role="Market Analyst",
-            goal="Provide current market trends and economic outlook",
-            backstory="Expert in macroeconomic trends and market indices.",
-            verbose=True,
-            allow_delegation=False,
-            tools=[],
-            llm=self.llm
-        )
-
-    def analyze(self):
-        prompt = "Provide a short summary of current US market conditions and macroeconomic trends."
-        return self.llm.complete(prompt)
+# Create a Market Analyst agent
+market_analyst = Agent(
+    role='Macroeconomic Analyst',
+    goal='Provide macroeconomic context for the stock analysis.',
+    backstory=(
+        'An economist with expertise in tracking and interpreting broad economic indicators. '
+        'Your insights help frame the company\'s performance within the larger economic picture.'
+    ),
+    tools=[get_fred_data],
+    verbose=True,
+    allow_delegation=False
+)
