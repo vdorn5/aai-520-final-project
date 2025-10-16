@@ -16,6 +16,7 @@ earnings_analyst = Agent(
 )
 from src.tools.yfinance_client import get_yfinance_financials
 from src.tools.yfinance_client import get_yfinance_financials, get_analyst_recommendations
+from src.tools.memory_tools import read_memory
 import pandas as pd
 import io
 import json
@@ -55,7 +56,12 @@ class EarningsAnalystAgent:
     def analyze(self, ticker):
         print(f"\n[+] Running Earnings Analysis for {ticker}...\n")
 
-        # Fetch data directly
+        # First, retrieve any past analysis from memory
+        print(f"[+] Retrieving past analysis for {ticker}...")
+        past_analysis = read_memory.run(ticker=ticker)
+        print(f"Past analysis: {past_analysis[:200]}..." if len(past_analysis) > 200 else f"Past analysis: {past_analysis}")
+
+        # Fetch current data
         financials = get_financials_cached(ticker)
         recommendations = get_analyst_recommendations(ticker)
 
@@ -80,15 +86,20 @@ Review the financial report and provide a structured analysis in JSON format.
 **Company:** {ticker}
 
 **Instructions:**
-Analyze the financial data and respond ONLY in valid JSON format with the following structure:
+Analyze the financial data and respond ONLY in **pretty-printed JSON** with **indentation and line breaks**. 
+Use this exact structure:
 {{
     "revenue": "string - Total revenue with growth percentage if available",
     "net_income": "string - Net income with growth/decline percentage",
     "eps": "string - Earnings per share with comparison to previous period",
     "growth_comment": "string - Brief analysis of growth trends and key metrics",
     "analyst_sentiment": "string - Summary of analyst recommendations and sentiment",
-    "overall_sentiment": "positive|neutral|negative - Overall investment sentiment"
+    "overall_sentiment": "positive|neutral|negative - Overall investment sentiment",
+    "change_from_past": "string - How this analysis differs from or confirms past analysis"
 }}
+
+**PAST ANALYSIS CONTEXT:**
+{past_analysis}
 
 **Financial Data to Analyze:**
 1. **Quantitative extraction** - Identify key figures:
@@ -101,12 +112,15 @@ Analyze the financial data and respond ONLY in valid JSON format with the follow
    - Performance trends
    - Profitability indicators
    - Growth signals
+   - Changes from past analysis (if any)
 
 3. **Analyst sentiment** - Consider these latest recommendations:
 {recommendations}
 
 **Raw financial data:**
 {financials}
+
+**Important:** Compare current findings with past analysis to identify trends, changes, or confirmations. Note any significant differences or improvements/deteriorations.
 
 Respond with ONLY the JSON object, no additional text or formatting.
 """
@@ -126,7 +140,8 @@ Respond with ONLY the JSON object, no additional text or formatting.
                 "eps": "Unable to extract",
                 "growth_comment": "Analysis failed due to parsing error",
                 "analyst_sentiment": "Unable to extract",
-                "overall_sentiment": "neutral"
+                "overall_sentiment": "neutral",
+                "change_from_past": "Unable to compare due to parsing error"
             }
 
         return result
