@@ -11,7 +11,7 @@ load_dotenv()
 from tools.memory_tools import save_memory
 
 from agents.earnings_analyst_agent import earnings_analyst
-from agents.new_analyst_agent import news_analyst
+from agents.news_analyst_agent import news_analyst
 from agents.market_analyst_agent import market_analyst
 from agents.critic_agent import critic_agent
 from agents.investment_agents import investment_advisor
