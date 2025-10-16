@@ -68,7 +68,7 @@ advisory_draft_task = Task(
     'news sentiment, and macroeconomic environment.'
   ),
   agent=None,
-  context=[earnings_analysis_task, news_analysis_task, market_analysis_task] # Corrected
+  context=[earnings_analysis_task, news_analysis_task, market_analysis_task]
 )
 
 # Task for the Critic Agent (Final Report Generation)
@@ -88,5 +88,5 @@ report_critique_task = Task(
         'critically reviewed and refined.'
     ),
     agent=None,
-    context=[advisory_draft_task] # Corrected
+    context=[advisory_draft_task]
 )
