@@ -9,9 +9,14 @@ seaborn==0.13.2
 tensorflow==2.15.0
 
 # project specific requirements
-yfinance==0.2.66
-openai==2.1.0
-langchain==0.3.27
-crewai==0.201.1
-beautifulsoup4==4.14.2
-python-dotenv==1.1.1
+crewai
+crewai-tools
+python-dotenv
+yfinance
+openai
+newsapi-python
+nltk
+transformers
+torch
+fredapi
+

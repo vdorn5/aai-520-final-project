@@ -1,12 +1,20 @@
 # base docker image
-FROM python:3.11-slim
+FROM nvidia/cuda:12.2.0-runtime-ubuntu22.04
 
 RUN apt-get update
 RUN apt-get install -y \
-    git 
+    git \
+    software-properties-common \
+    python3.11 \
+    python3-pip 
     # add these packages for pdf exporting jupyter notebooks
     # texlive-xetex \
     # pandoc
+
+# Install Jupyter and IPython kernel
+RUN python3.11 -m pip install --upgrade pip \
+    && python3.11 -m pip install \
+    notebook ipykernel jupyterlab
 
 # working directory
 WORKDIR /app
